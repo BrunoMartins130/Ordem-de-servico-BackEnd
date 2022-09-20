@@ -1,16 +1,18 @@
 package com.bruno.os.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.hibernate.validator.constraints.br.CPF;
+
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@Table
 public abstract class Pessoa {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    @CPF
     private String cpf;
     private String telefone;
 
