@@ -1,6 +1,7 @@
 package com.bruno.os.dtos;
 
 import com.bruno.os.domain.Tecnico;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.br.CPF;
 
 import java.io.Serializable;
@@ -9,9 +10,12 @@ public class TecnicoDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Integer id;
+    @NotEmpty(message = "O campo NOME é requerido")
     private String nome;
     @CPF
+    @NotEmpty(message = "O campo CPF é requerido")
     private String cpf;
+    @NotEmpty(message = "O campo TELEFONE é requerido")
     private String telefone;
 
     public TecnicoDTO () {
