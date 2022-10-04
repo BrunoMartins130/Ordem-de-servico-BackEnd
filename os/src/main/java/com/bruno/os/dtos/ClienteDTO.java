@@ -1,33 +1,31 @@
 package com.bruno.os.dtos;
 
-import com.bruno.os.domain.Tecnico;
-import org.hibernate.validator.constraints.br.CPF;
+import com.bruno.os.domain.Cliente;
+
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
-public class TecnicoDTO implements Serializable {
+public class ClienteDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Integer id;
-    @NotEmpty(message = "O campo NOME é requerido")
+    @NotEmpty(message = "O campo NOME é requerido!")
     private String nome;
-    @CPF
-    @NotEmpty(message = "O campo CPF é requerido")
+    @NotEmpty(message = "O campo CPF é requerido!")
     private String cpf;
-    @NotEmpty(message = "O campo TELEFONE é requerido")
+    @NotEmpty(message = "O campo TELEFONE é requerido!")
     private String telefone;
 
-    public TecnicoDTO () {
+    public ClienteDTO () {
         super();
     }
 
-    public TecnicoDTO(Tecnico obj) {
-        this.id = obj.getId();
-        this.nome = obj.getNome();
-        this.cpf = obj.getCpf();
-        this.telefone = obj.getTelefone();
+    public ClienteDTO(Cliente objCliente) {
+        this.id = objCliente.getId();
+        this.nome = objCliente.getNome();
+        this.cpf = objCliente.getCpf();
+        this.telefone = objCliente.getTelefone();
     }
-
 
     public Integer getId() {
         return id;
