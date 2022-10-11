@@ -39,14 +39,24 @@ public class ClienteResource {
 
     }
 
-    // Cria um cliente pelo seu id 
-    @PostMapping(value = "/{id}")
-    public ResponseEntity <ClienteDTO> create (@Valid @PathVariable ClienteDTO clienteDTO) {
+    // Cria um cliente pelo seu id
+    @PostMapping
+    public ResponseEntity <ClienteDTO> create (@Valid @RequestBody ClienteDTO clienteDTO) {
         Cliente cliente = service.create(clienteDTO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(cliente.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
 
-
+    //faz a alteração dos dados
+    @PutMapping(value = "/{id}")
+    public ResponseEntity <ClienteDTO> update (@PathVariable Integer id, @Valid @RequestBody ClienteDTO clienteDTO) {
+        ClienteDTO ObjCliente = new ClienteDTO(service.update(id, clienteDTO));
+        return ResponseEntity.ok().body(clienteDTO);
+    }
+   @DeleteMapping(value = "/{id}")
+    public ResponseEntity <ClienteDTO> delete (@PathVariable Integer id){
+          service.delete(id);
+          return ResponseEntity.noContent().build();
+    }
 
 }
