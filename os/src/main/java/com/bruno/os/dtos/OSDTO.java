@@ -2,7 +2,7 @@ package com.bruno.os.dtos;
 
 import com.bruno.os.domain.OS;
 import com.fasterxml.jackson.annotation.JsonFormat;
-
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -10,14 +10,18 @@ public class OSDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Integer id;
+
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime dataAbertura;
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime dataFechamento;
     private Integer prioridade;
+    @NotEmpty(message = "O campo OBSERVAÇÕES é requerido!")
     private String observacoes;
     private Integer status;
+
     private Integer tecnico;
+
     private Integer cliente;
 
     public OSDTO() {
