@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,6 +45,11 @@ public class OsService {
 
     }
 
+    public OS update(OSDTO obj) {
+        findById(obj.getId());
+        return fromDTO(obj);
+    }
+
     private OS fromDTO(OSDTO obj){
       OS newObj = new OS();
       newObj.setId(obj.getId());
@@ -57,6 +63,12 @@ public class OsService {
         newObj.setTecnico(tec);
         newObj.setCliente(cli);
 
+        if(newObj.getStatus().getCod().equals(2)){
+            newObj.setDataFechamento(LocalDateTime.now());
+        }
+
         return repository.save(newObj);
     }
+
+
 }

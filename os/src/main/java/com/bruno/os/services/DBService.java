@@ -39,10 +39,12 @@ public class DBService {
         t3.getList().add(os1);
         c1.getList().add(os1);
 
+
         tecnicoRepository.saveAll(Arrays.asList(t1));
         tecnicoRepository.saveAll(Arrays.asList(t2));
         tecnicoRepository.saveAll(Arrays.asList(t3));
         clienteRepository.saveAll(Arrays.asList(c1));
+
         osRepository.saveAll(Arrays.asList(os1));
     }
 }
