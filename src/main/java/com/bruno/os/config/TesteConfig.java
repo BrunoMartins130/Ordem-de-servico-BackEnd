@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Profile;
 import java.util.Arrays;
 
 @Configuration
-@Profile("teste")
+@Profile("test")
 public class TesteConfig {
 
     @Autowired
